@@ -10,6 +10,11 @@ name: Build AryanVPN APK
 permissions:
   contents: read
 
+# Keep only the newest build queued/running for the current branch.
+concurrency:
+  group: aryanvpn-apk-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-22.04
